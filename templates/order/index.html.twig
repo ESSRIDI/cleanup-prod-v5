@@ -35,7 +35,7 @@
       <td data-label="Volume">{{item.price.volume.volume}} {{item.price.product.unity}}</td>
       <td data-label="Prix">{{item.price.price|format_currency('EUR')}}</td>
       <td data-label="Quantité">{{item.quantity}}</td>
-      <td class="text-cleanup-valid" data-label="Total TTC">{{(item.quantity * item.price.price)|format_currency('EUR') }}</td>
+      <td class="text-cleanup-valid" data-label="Total">{{(item.quantity * item.price.price)|format_currency('EUR') }}</td>
      
     </tr>
     {% endfor %}

@@ -11,7 +11,7 @@ footer {
     padding: variables.$cleanup-base-padding;
     text-align: left;
     color: variables.$cleanup-primary;
-    z-index: -10;
+    z-index: 0;
     // margin-top: 7rem;
   }
   @include mixins.xs {
