@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+  {% block title %}E-mail verifié{% endblock %}
+
+{% block body %}
+   <div class="bg-cleanup-danger">
+   {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+</div>
+<div class="bg-cleanup-succes">
+  {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+   </div>
+   <p class="text-cleanup-valid">Un email vous a été envoyé, merci de verifier votre boîte de réception.</p>
+   <a  class="underline-for-link" href="{{path('app_home')}}">Retourner à l'acceuil</a>
+   <a class="underline-for-link" href="{{path('app_login')}}">Connectez-vous</a>
+{% endblock %}

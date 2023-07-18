@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commander{% endblock %}
+
+{% block body %}
+<div class="cleanup-border">
+{# {{ form_start(deliveryForm, {action:path('order_prepare')} ) }} #}
+{{ form_start(deliveryForm, {action:path('order_prepare')})}}
+
+	{{ form_row(deliveryForm.adresses) }}
+   
+
+	{{ form_row(deliveryForm.transporter)|replace({'[-br]' : '</br>' ,'[-strong]' : '<strong>','[-/strong]' : '</strong>'})|raw }}
+ 
+
+<table>
+  <caption class="text-cleanup-sky"> Récapitulatif </caption>
+
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Produit</th>
+      <th scope="col">Volume</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Total</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+{% for item in items %}
+    <tr>
+      <td data-label="Image"><img height= "80px" src="{{asset(item.price.product.image)}}" alt=""></td>
+      <td data-label="Produit">{{item.price.product.name}}</td>
+      <td data-label="Volume">{{item.price.volume.volume}} {{item.price.product.unity}}</td>
+      <td data-label="Prix">{{item.price.price|format_currency('EUR')}}</td>
+      <td data-label="Quantité">{{item.quantity}}</td>
+      <td class="text-cleanup-valid" data-label="Total TTC">{{(item.quantity * item.price.price)|format_currency('EUR') }}</td>
+     
+    </tr>
+    {% endfor %}
+
+  </tbody>
+   <tfoot class="tfoot-cart" scope="row" >
+   <tr>
+   <th class="text-cleanup-light" colspan = "1">Total TTC</th>
+   <td class="text-cleanup-cloudy" colspan = "3"> TVA = {{(tva)|format_currency('EUR')}}</td>
+   <td class="amount-cart" colspan = "2">{{total|format_currency('EUR')}} <sup>**</sup></td>
+   
+   </tr>
+   </tfoot>
+</table>
+
+
+ <button type="submit" class="btn-cleanup-primary">Valider et continuer vers le paiement</button>
+    {{ form_end(deliveryForm)}}
+</div>
+<div class="info-for-users">
+			<p>
+				<span>
+					**
+					<span>
+						<i class="text-cleanup-cloudy">Une TVA de 20% est incluse dans le montant total</i>
+					</p>
+
+				</div>
+{% endblock %}

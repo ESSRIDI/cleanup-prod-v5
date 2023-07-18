@@ -1,0 +1,144 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+table {
+  border: 1px dotted variables.$cleanup-primary;
+ 
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  // background-color: variables.$cleanup-light;
+  border: 1px dotted variables.$cleanup-primary;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: variables.$cleanup-cloudy;
+}
+
+@include mixins.xs  {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    // border-bottom: 3px dotted variables.$cleanup-primary;;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px dashed variables.$cleanup-primary;;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.amount-cart{
+  text-align: end;
+
+  font-size: variables.$cleanup-font-size-large;
+  color: variables.$cleanup-valid;
+
+}
+
+.tfoot-cart {
+
+  background-color: variables.$cleanup-success;
+}
+
+.order-form {
+
+  input[type="radio"] {
+    display: block;
+  }
+  label:nth-child(0) ,label:nth-child(1) {
+    color:variables.$cleanup-sky;
+    margin-bottom: 2rem;
+  }
+}
+#order_form_transporter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  label {
+    max-width: 13rem;
+  }
+
+
+  
+}
+
+@include mixins.xs {
+  #order_form_transporter {
+    input[type="radio"] {
+      margin-right: auto;
+    }
+    flex-direction: column;
+  }
+  #order_form_adresses  {
+    max-width:17rem;
+    option {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.cart-quantity{
+  max-width: 7rem;
+  // font-family: 'Poppins';
+  font-size: large;
+}
+
+
+

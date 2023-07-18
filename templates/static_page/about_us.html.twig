@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+	<h1 class="cleanup-shadow-blue">A propos de nous</h1>
+	<section class="about-section">
+		<h2>Création</h2>
+		<div>
+			<p>
+				<strong>Cleanup</strong>
+				est une petite entreprise familiale de fabrication de produits de nettoyage à usage domestique.
+				<br>L'entreprise a été crée en
+				<strong>2016</strong>
+				par
+				<strong>Yacine ESSRIDI</strong>
+				et compte aujourd'hui plus de dix salariés.<br>A ce jour,
+				<strong>Cleanup</strong>
+				fabrique et distribue ses produits uniquement aux professionnels.
+
+			</p>
+			<img src="{{asset('build/images/caroussel/pancart.png')}}" alt="carte de visite">
+		</div>
+	</section>
+
+	<section class="about-section">
+		<h2>Logo de cleanup</h2>
+		<div>
+			<img width="100%" src="{{asset('build/images/logoclenaup.png')}}" alt="logo de la marque cleanup">
+			<p>Le logo
+				<strong>Cleanup</strong>
+				a été conçu à l'origine complètement en
+				<em class="text-cleanup-primary">bleu
+				</em>
+				mais avec le temps d'autres couleurs ont été ajoutées à celui-ci.<br>Aujourd'hui, ce dernier comporte principalement du
+				<em class="text-cleanup-secondary">rouge</em>
+				et du
+				<em class="text-cleanup-primary">bleu</em>
+				avec un peu de
+				<em class="text-cleanup-valid">vert</em>.<br>Le logo est déposé auprès du l'INNORPI <em class="text-cleanup-cloudy">(L'Institut National de la Normalisation et de la Propriété Industrielle)</em> en
+				<strong>Tunisie</strong>.</p>
+
+		</div>
+	</section>
+	<section class="about-section">
+		<h2>Varité de produits</h2>
+		<div>
+			<p>
+				<strong>Cleanup</strong>
+				fabrique principalement des produits sous les catégories suivantes :
+				<br>
+				<em>produits lessives</em>,
+				<em>liquides vaisselle</em>
+				,<em>nettoyant multisurfaces</em>,
+				<em>désodorisant</em>
+				et 
+				<em>désinfectant</em>.
+
+			</p>
+			<img src="{{asset('build/images/caroussel/collection-4.png')}}" alt="collection d'air fraîches">
+		</div>
+
+
+		<div>
+			<img src="{{asset('build/images/caroussel/collection-5.png')}}" alt="collection de déodorants">
+			<p>Sous ces catégories,<strong>Cleanup</strong> propose une multitude de produits comme les adoucissants , les air fraîches...etc. <br><strong>Cleanup</strong>, a réussi à diversifier sa gamme de produits depuis sa création.<br>Nous proposons toujours de nouveaux produits créés par nous et testés par nos clients.<br>Nous n'avons jamais cessé de travailler sur la qualité et l'esthétisme du produit.</p>
+
+		</div>
+	</section>
+	<section class="about-section">
+		<h2>Les clients nous trouvent...</h2>
+		<div>
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-1.jpg')}}" alt="client pouce levé 1">
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-2.jpg')}}" alt="client pouce levé 2">
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-3.jpg')}}" alt="client pouce levé 3">
+
+		</div>
+		<div>
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-4.jpg')}}" alt="client pouce levé 4">
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-5.jpg')}}" alt="client pouce levé 5">
+			<img width="100%" class="img-shadow" src="{{asset('build/images/pub-6.jpg')}}" alt="client pouce levé 6">
+
+
+		</div>
+	</section>
+	<section class="d-flex-j-sp-btw margin-b-3">
+		<p style='text-align: justify;' class="lighten-gray">Pour plus d'information,<span style='font-size:30px;'>&#128515;</span>
+			Merci de nous contacter en cliquant sur ce boutton
+			<span style='font-size:30px;'>&#128073;</span>
+			<a class="btn-primary" href="{{path('app_contact')}}">Nous contacter
+		</a>
+		</p>
+		
+	</section>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+@use "../abstracts/variables";
+
+input, select {
+  // width:8rem;
+  // height: 2.5rem;
+  display: inline-block;
+  border-radius: variables.$cleanup-base-border-radius;
+  border: variables.$cleanup-base-border-thickness dotted
+    variables.$cleanup-primary;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  color: variables.$cleanup-primary;
+  background-color: variables.$cleanup-light;
+  &:hover {
+    border: variables.$cleanup-base-border-thickness dotted
+      variables.$cleanup-sky;
+  }
+}
+
+.input-qty {
+  font-size: variables.$cleanup-font-size-large;
+  width: 7rem;
+
+  &:focus {
+    background-color: variables.$cleanup-success;
+  }
+}
+
+
+textarea{
+  width: 12rem;
+ min-height: 5rem;
+  display: inline-block;
+  border-radius: variables.$cleanup-base-border-radius;
+  border: variables.$cleanup-base-border-thickness dotted
+    variables.$cleanup-primary;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  color: variables.$cleanup-primary;
+  background-color: variables.$cleanup-light;
+  &:hover {
+    border: variables.$cleanup-base-border-thickness dotted
+      variables.$cleanup-sky;
+  }
+
+}
+

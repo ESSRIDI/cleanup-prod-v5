@@ -1,0 +1,435 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+.admin-container {
+  @include mixins.container(variables.$cleanup-large-container);
+  display: flex;
+  flex-direction: column;
+  background-color: variables.$cleanup-light;
+  padding: 0;
+  //   margin: variables.$cleanup-base-margin;
+
+  border: variables.$cleanup-base-border-thickness solid
+    variables.$cleanup-primary;
+  border-radius: variables.$cleanup-base-border-radius;
+  box-shadow: 3px 3px 10px 0px #222d5149;
+  height: 80vh;
+}
+
+/**
+ * Tabs
+ */
+.tabs {
+  display: flex;
+  flex-wrap: wrap; // make sure it wraps
+}
+
+.span {
+  font-family: "Material Icons Outlined";
+
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.tabs label {
+  order: 1; // Put the labels first
+  display: block;
+  padding: 1rem 1rem;
+  width: 20%;
+  // margin-right: 0.2rem;
+  border-radius: variables.$cleanup-base-border-radius
+    variables.$cleanup-base-border-radius 0 0;
+  cursor: pointer;
+  background: variables.$cleanup-light;
+  color: #badce2;
+  font-weight: bold;
+  transition: background ease 0.2s;
+}
+.tabs .tab {
+  order: 99; // Put the tabs last
+  flex-grow: 1;
+  width: 100%;
+  display: none;
+  padding: 1rem;
+  background: #d5e8eb;
+  border-top: 2px dashed variables.$cleanup-sky;
+  height: 100%;
+}
+.tabs input[type="radio"] {
+  display: none;
+}
+.tabs input[type="radio"]:checked + label {
+  background: variables.$cleanup-sky;
+  color: variables.$cleanup-light;
+}
+.tabs input[type="radio"]:checked + label + .tab {
+  display: block;
+}
+
+@include mixins.xs {
+  .tabs .tab,
+  .tabs label {
+    order: initial;
+  }
+  .tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
+  }
+}
+
+// @include mixins.sm {
+//   .tabs .tab,
+//   .tabs label {
+//     order: initial;
+//   }
+//   .tabs label {
+//     width: 100%;
+//     margin-right: 0;
+//     margin-top: 0.2rem;
+//   }
+// }
+
+/*#region tabs */
+
+/* Font Styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+
+/* tabBox */
+#tabBox {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+
+  position: relative;
+}
+.tabWrap {
+  float: none;
+}
+
+/* Hide Input Radio */
+input[type="radio"] {
+  display: none;
+}
+
+/* Tabs */
+.tab {
+  width: 100%;
+  height: 4rem;
+
+  margin: 0 auto;
+  background: variables.$cleanup-primary;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: block;
+}
+.tab::before {
+  display: none;
+}
+.tab::after {
+  content: "";
+  display: none;
+}
+.tab span {
+  color: variables.$cleanup-light;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  line-height: 4rem;
+  display: block;
+}
+
+.label-01 {
+  z-index: 3;
+}
+.label-02 {
+  z-index: 2;
+}
+.label-03 {
+  z-index: 1;
+}
+.label-04 {
+  z-index: 1;
+}
+.label-05 {
+  z-index: 1;
+}
+.label-06 {
+  z-index: 1;
+}
+// .label-03 {
+//   z-index: 1;
+// }
+
+/* Display Checked Input */
+.tabWrap [id^="tab"]:checked ~ .tabContent {
+  display: block;
+}
+/* Bring Forward Checked Input */
+.tabWrap [id^="tab"]:checked + label {
+  background: variables.$cleanup-primary;
+  z-index: 4;
+}
+
+.tabWrap [class^="tab label"]:not(.label-01) {
+  margin-left: 0;
+}
+
+/* Unchecked Input Hover */
+.tabWrap [id^="tab"]:not(:checked) + label:hover {
+  background: variables.$cleanup-primary;
+  border: none;
+}
+
+/* Unchecked Input */
+.tabWrap [id^="tab"]:not(:checked) + label::before {
+  background: #f0eee9;
+  background-color: #a3c8ce;
+}
+
+/* Checked Input No Shadow*/
+.tabWrap [id^="tab"]:checked + label::after {
+  display: none;
+}
+
+/* tabContent */
+.tabContent {
+  width: 100%;
+  // height: auto;
+  min-height: 35rem;
+  margin: 0 auto;
+
+  padding: 5%;
+  background: #fff;
+
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.015);
+  position: absolute;
+  /* Multiple .tab Height By Number Of .tab(s) To Get Position Absolute Top */
+  top: 195px;
+  left: 0;
+  display: none;
+  z-index: 1;
+}
+.tabContent h1,
+p {
+  font-family: "Open Sans", sans-serif;
+}
+.tabContent h1 {
+  margin: 0;
+  color: variables.$cleanup-primary;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+.tabContent p {
+  margin: 0.5em 0;
+  color: #222;
+}
+
+/* Media Queries */
+@media (min-width: 30rem) {
+  #tabBox {
+    width: 25rem;
+    margin: 1rem auto;
+  
+  }
+  .tabWrap {
+    float: left;
+  }
+  .tab {
+    width: 1.5rem;
+    height: auto;
+    margin: 0;
+    background: none;
+    border: 3rem solid #fff;
+    border-top: none;
+    border-right: 1rem solid transparent;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+  }
+  .tab::before {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    background: variables.$cleanup-primary;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.7rem;
+    left: -1.5rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: block;
+  }
+  .tab::after {
+    content: "";
+    width: 6rem;
+    height: 0px;
+    background: rgba(0, 0, 0, 0.025);
+    position: absolute;
+    top: 3rem;
+    right: -1rem;
+    display: block;
+  }
+  .tab span {
+    line-height: 3rem;
+    position: absolute;
+    top: 0;
+    left: -15px;
+  }
+  /* Cancel Checked Input Background */
+  .tabWrap [id^="tab"]:checked + label {
+    background: none;
+  }
+  /* Unchecked Input Hover */
+  .tabWrap [id^="tab"]:not(:checked) + label:hover {
+    background: none;
+    border: 3rem solid #f9f9f9;
+
+    border-top: none;
+    border-right: 15px solid transparent;
+  }
+  .tabWrap [class^="tab label"]:not(.label-01) {
+    margin-left: -5px;
+  }
+  .tabContent {
+    width: 100%;
+    padding: 1.5rem;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+  }
+}
+
+@media (min-width: 53rem) {
+  #tabBox {
+    width: 100%;
+  }
+  .tabContent {
+    width: 100%;
+      position: absolute;
+    top: 3rem;
+    left: 0;
+   
+  }
+}
+
+//   @include mixins.sm  {
+//   #tabBox {
+//     width: 25rem;
+//     margin: 1rem auto;
+  
+//   }
+//   .tabWrap {
+//     float: left;
+//   }
+//   .tab {
+//     width: 1.5rem;
+//     height: auto;
+//     margin: 0;
+//     background: none;
+//     border: 3rem solid #fff;
+//     border-top: none;
+//     border-right: 1rem solid transparent;
+//     position: relative;
+//     cursor: pointer;
+//     -webkit-transition: all 0.2s ease-in-out;
+//     -moz-transition: all 0.2s ease-in-out;
+//     -ms-transition: all 0.2s ease-in-out;
+//     -o-transition: all 0.2s ease-in-out;
+//     transition: all 0.2s ease-in-out;
+//     display: inline-block;
+//   }
+//   .tab::before {
+//     content: "";
+//     width: 1.5rem;
+//     height: 1.5rem;
+//     background: variables.$cleanup-primary;
+//     border-radius: 50%;
+//     position: absolute;
+//     top: 0.7rem;
+//     left: -1.5rem;
+//     -webkit-transition: all 0.2s ease-in-out;
+//     -moz-transition: all 0.2s ease-in-out;
+//     -ms-transition: all 0.2s ease-in-out;
+//     -o-transition: all 0.2s ease-in-out;
+//     transition: all 0.2s ease-in-out;
+//     display: block;
+//   }
+//   .tab::after {
+//     content: "";
+//     width: 6rem;
+//     height: 0px;
+//     background: rgba(0, 0, 0, 0.025);
+//     position: absolute;
+//     top: 3rem;
+//     right: -1rem;
+//     display: block;
+//   }
+//   .tab span {
+//     line-height: 3rem;
+//     position: absolute;
+//     top: 0;
+//     left: -15px;
+//   }
+//   /* Cancel Checked Input Background */
+//   .tabWrap [id^="tab"]:checked + label {
+//     background: none;
+//   }
+//   /* Unchecked Input Hover */
+//   .tabWrap [id^="tab"]:not(:checked) + label:hover {
+//     background: none;
+//     border: 3rem solid #f9f9f9;
+
+//     border-top: none;
+//     border-right: 15px solid transparent;
+//   }
+//   .tabWrap [class^="tab label"]:not(.label-01) {
+//     margin-left: -5px;
+//   }
+//   .tabContent {
+//     width: 100%;
+//     padding: 1.5rem;
+//     position: absolute;
+//     top: 3rem;
+//     left: 0;
+//   }
+// }
+@include mixins.xs {
+  .tabContent {
+    width: 100%;
+    padding: 1.5rem;
+    position: absolute;
+    top: 24rem;
+    left: 0;
+  }
+}
+/*#endregion tabs */
+// .tabContent {
+//   width: 100%;
+//   // height: auto;
+//   min-height: 35rem;
+//   margin: 0 auto;
+
+//   padding: 5%;
+//   background: #fff;
+
+//   box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.015);
+//   position: absolute;
+//   /* Multiple .tab Height By Number Of .tab(s) To Get Position Absolute Top */
+//   top: 195px;
+//   left: 0;
+//   display: none;
+//   z-index: 1;
+// }

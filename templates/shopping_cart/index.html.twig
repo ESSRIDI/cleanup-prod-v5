@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	<h1 class="cleanup-shadow-blue">Votre panier</h1>
+	{% if items|length < 1 %}
+		<p>Vous n'avez pas encore ajouter un produit au panier</p>
+		<a class="underline-for-link" href="{{path('app_product_list')}}">Retour à la page des produits</a>
+	{% else %}
+		<table>
+			<caption class="text-cleanup-sky">
+				{{(items|length > 1) ? 'List des produits' : 'Produit'}}
+			</caption>
+
+			<thead>
+				<tr>
+					<th scope="col">Image</th>
+					<th scope="col">Produit</th>
+					<th scope="col">Volume</th>
+					<th scope="col">Prix HT</th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Total HT</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody id="cart-table">
+				{% for item in items %}
+{# <pre>
+	{{ dump(item.compositeId) }}
+</pre> #}
+
+					<tr class ="tr-cart" data-price={{item.price.price}} >
+						<td data-label="Image"><img height="80px" src="{{asset(item.price.product.image)}}" alt=""></td>
+						<td data-label="Produit">{{item.price.product.name}}</td>
+						<td data-label="Volume">{{item.price.volume.volume}}
+							{{item.price.product.unity}}</td>
+						<td data-label="Prix HT" >{{item.price.price|format_currency('EUR')}}</td>
+						<td data-label="Quantité" name="cart-quantity" data-quantity= {{item.quantity}}><input type="number" name="cart-quantity" class="cart-quantity" data-price={{item.price.price}} data-card-line-id={{item.compositeId}} value={{item.quantity}} min="1"></td>
+						<td class="text-cleanup-valid" name="total-row" data-label="Total HT" data-total-row={{(item.quantity * item.price.price)}}>{{(item.quantity * item.price.price)|format_currency('EUR') }}</td>
+						<td>
+							<a class="btn-delete" onclick="return confirm('Êtes-vous sûr de supprimer le produit {{item.price.product.name}} ?');" href="{{path('app_shopping_cart_remove',{id: item.compositeId})}}">
+								<span class="material-symbols-outlined span">
+									delete
+								</span>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+			<tfoot class="tfoot-cart" scope="row">
+				<tr>
+					<th class="text-cleanup-light" colspan="1">Total HT</th>
+					<td class="amount-cart" name="amount-cart" colspan="5" data-total={{total}}>{{total|format_currency('EUR')}}
+						<sup>*</sup>
+					</td>
+					<td colspan="1">
+						<a class="btn-primary " href="{{path('app_order')}}">
+							<span class="material-symbols-outlined span ">
+								shopping_cart
+							</span>
+						</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div>
+			<a class="underline-for-link" href="{{path('app_product_list')}}">Continuer vos achats</a>
+		</div>
+		<div class="info-for-users">
+			<p>
+				<span>
+					*
+					<span>
+						<i class="text-cleanup-cloudy">TVA, promotions ne sont pas encore incluses</i>
+					</p>
+
+				</div>
+
+			{% endif %}
+		{% endblock %}

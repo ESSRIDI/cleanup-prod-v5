@@ -1,0 +1,184 @@
+@use "sass:math";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+.cleanup-card {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  // max-height: 30rem;
+  color: variables.$cleanup-dark;
+  background-color: variables.$cleanup-light;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+
+  border: variables.$cleanup-base-border-thickness solid variables.$cleanup-primary;
+  border-radius: variables.$cleanup-base-border-radius;
+  box-shadow: 3px 3px 10px 0px #222d5149;
+   img {
+    width: 100%;
+  height: 20rem;
+  object-fit:contain;
+   }
+  .title {
+    text-align: center;
+    color: variables.$cleanup-primary !important;
+    font-size: variables.$cleanup-font-size-large;
+    padding-bottom: variables.$cleanup-base-padding;
+
+    font-weight: 700;
+  }
+  &-body {
+    color: variables.$cleanup-dark;
+    font-size: variables.$cleanup-base-font-size;
+  }
+  .body {
+    text-align: justify;
+    text-justify: inter-word;
+    color: variables.$cleanup-cloudy-dark;
+    font-size: variables.$cleanup-base-font-size;
+  }
+  p{
+    inline-size: 100%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    max-height: 6rem;
+  }
+  .savoir-plus{
+   margin-left: auto;
+   margin-top:auto;
+    text-decoration: none;
+    color: variables.$cleanup-sky;
+    text-align: end;
+
+   
+    text-overflow: ellipsis;
+  
+ 
+    
+   
+   
+  }
+}
+
+.cleanup-list {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  color: variables.$cleanup-dark;
+  background-color: variables.$cleanup-light;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+
+  border: variables.$cleanup-base-border-thickness solid
+    variables.$cleanup-primary;
+  border-radius: variables.$cleanup-base-border-radius;
+  box-shadow: 3px 3px 10px 0px #222d5149;
+
+  .title {
+    text-align: center;
+    color: variables.$cleanup-primary !important;
+    font-size: variables.$cleanup-font-size-large;
+    padding-bottom: variables.$cleanup-base-padding;
+
+    font-weight: 700;
+  }
+  &-body {
+    color: variables.$cleanup-dark;
+    font-size: variables.$cleanup-base-font-size;
+  }
+}
+
+.actions {
+  margin-top: auto;
+  // margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+@include mixins.xs {
+  .cleanup-card {
+    width: math.div(100%, 1);
+  }
+}
+@include mixins.sm {
+  .cleanup-card {
+    width: math.div(100%, 2);
+  }
+}
+@include mixins.md {
+  .cleanup-card {
+    width: math.div(100%, 3);
+  }
+}
+@include mixins.lg {
+  .cleanup-card {
+    justify-content: space-around;
+    width: math.div(100%, 4);
+  }
+}
+@include mixins.xl {
+  .cleanup-card {
+    justify-content: space-around;
+    width: math.div(90%, 4);
+  }
+}
+.cleanup-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: variables.$cleanup-dark;
+  background-color: variables.$cleanup-light;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+
+  border: variables.$cleanup-base-border-thickness solid variables.$cleanup-primary;
+  border-radius: variables.$cleanup-base-border-radius;
+  box-shadow: 3px 3px 10px 0px #222d5149;
+ h3 {
+  display: block;
+  justify-content: start;
+  text-align: start;
+  align-items: start;
+  margin-top: variables.$cleanup-base-margin;
+
+ }
+
+ div{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left:auto;
+ }
+}
+
+.availability-status {
+  position: relative;
+  right: 0;
+  height: 25px;
+  width: 25px;
+
+  border-radius: 50%;
+  display: inline-block;
+}
+.valid {
+  color: variables.$cleanup-valid;
+  
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
+  
+  
+}
+.not-valid {
+    color: variables.$cleanup-danger;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
+  
+}

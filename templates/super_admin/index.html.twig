@@ -1,0 +1,80 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Espace super administrateur
+{% endblock %}
+
+
+{% block greeting %}
+	<h1 class="text-cleanup-danger">
+		<em class="text-cleanup-cloudy-light">Bonjour,</em>
+		{{ app.user.firstName|capitalize }}
+		{{ app.user.lastName|capitalize }}
+	</h1>
+
+{% endblock %}
+
+	{% block legend %}
+			<ul class="legend">
+<li><span>1</span> Gestion des produits</li>
+<li><span>2</span> Cordonnées utilisateur</li>
+<li><span>3</span> Suivi de mes commandes</li>
+<li><span>4</span> Gestion des prix</li>
+<li><span>5</span> Gestion des utilisateurs</li>
+<li><span>6</span> Etats des commandes des clients</li>
+</ul>
+{% endblock %}
+
+{% block tab %}
+
+<div class="tabWrap">
+			<input id="tab-04" name="tab" type="radio"/>
+			<label class="tab label-04" for="tab-04">
+				<span>4</span>
+			</label>
+			<!-- tabContent 03 -->
+			
+			<article class="tabContent">
+		<h2>Gestion des prix</h2>
+				<div>
+				
+					{% include "price/index.html.twig" %}
+					</div>
+			</article>
+	
+		</div>
+
+	<div class="tabWrap">
+		<input id="tab-05" name="tab" type="radio"/>
+		<label class="tab label-05" for="tab-05">
+			<span>5</span>
+		</label>
+		<!-- tabContent 05 -->
+
+		<article class="tabContent">
+			<h2>Gestion des utilisateurs</h2>
+			<div>
+
+				{% include "super_admin/manage_users.html.twig" %}
+
+			</div>
+		</article>
+	</div>
+
+<div class="tabWrap">
+		<input id="tab-06" name="tab" type="radio"/>
+		<label class="tab label-06" for="tab-06">
+			<span>6</span>
+		</label>
+		<!-- tabContent 06 -->
+
+		<article class="tabContent">
+			<h2>Etats des commandes</h2>
+			<div>
+
+				{% include "admin/users_orders.html.twig" %}
+
+			</div>
+		</article>
+	</div>
+	
+{% endblock %}

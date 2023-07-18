@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Ajouter un produit
+{% endblock %}
+{% block body %}
+	<a href="{{ path('app_product_list') }}" class="close-button">&times;</a>
+	{% block head_title %}
+		<h1>Ajouter un produit</h1>
+	{% endblock %}
+	<div class="cleanup-border cleanup-pad-1">
+	<p class="text-cleanup-danger asterisk-bottom-position-relative">  <small>champ obligatoire</small><sup>*</sup></p>
+		{{ form_start(productForm) }}
+		<div class="cleanup-border d-flex-j-sp-btw margin-lr-0">
+		
+			{{ form_row(productForm.category)}}
+			<a href="{{path('app_category_new')}}" class="btn-delete">
+				<span class="material-symbols-outlined span">
+					library_add
+				</span>
+			</a>
+		</div>
+		<div class="cleanup-border margin-lr-0">
+			<h3>Volumes</h3>
+			<ul class="volumes" data-index="{{ productForm.volumes|length > 0 ? productForm.volumes|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(productForm.volumes.vars.prototype)|e('html_attr') }}">
+				{% for volume in productForm.volumes %}
+					<li class="cleanup-border d-flex-j-sp-btw flex-dir">{{ form_row( volume.volume ) }}</li>
+				{% endfor %}
+				<button type="button" class="add_item_link" data-collection-holder-class="volumes">Ajouter un volume</button>
+			</ul>
+			{{  form_row(productForm.unity) }}
+		</div>
+		{{ form_end(productForm) }}
+		<a class="underline-for-link" href="{{path('app_product_list')}}">Annuler</a>
+	</div>
+{% endblock %}

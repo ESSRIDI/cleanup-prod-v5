@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{product[0].name}}
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{# <form action="{{path('item_detail',{id:product[0].id })}}" method="post"> #}
+	<form action="{{path('app_shopping_cart_add',{id:product[0].id })}}" method="post">
+
+		<div class="">
+			<div class="">
+				<a href="{{ path('app_product_list') }}" class="close-button">&times;</a>
+				<h1 class="text-cleanup-sky">{{product[0].name}}</h1>
+				<img class="thumbnail-product" src="{{asset(product[0].image)}}" alt="image produit"/>
+				<p class="description">{{product[0].description}}</p>
+				<hr class="separate-line">
+
+				<ul class="features">
+
+
+					<li>
+						{% if app.user %}
+							{# Volume(s) : #}
+							{{ (product[0].volumes)|length > 1 ? 'Volumes' : 'Volume' }}
+							<select name="volume-id" id="selected-volume-by-client">
+								<option value='-1' data-product-id={{product[0].id}}>...
+									{{product[0].unity}}</option>
+								{% for volume in product[0].volumes %}
+
+									<option value={{volume.id}} data-product-id={{product[0].id}}>{{volume}}
+										{{product[0].unity}}</option>
+
+								{% endfor %}
+
+							</select>
+						{% else %}
+							{# Volume(s) disponible(s) : #}
+							{{ (product[0].volumes)|length > 1 ? 'Volumes disponibles' : 'Volume disponible' }}
+							<p class="text-cleanup-primary">
+								{% for volume in product[0].volumes %}
+									{{volume}}
+									{{product[0].unity}}
+									<span class="text-cleanup-cloudy">|</span>
+
+								{% endfor %}
+							</p>
+						{% endif %}
+
+					</li>
+
+					<li>Parfum :
+						<span class="text-cleanup-primary">{{product[0].scent}}</span>
+					</li>
+					<li>Type :
+						<span class="text-cleanup-primary">{{product[0].quality}}</span>
+					</li>
+					<li>Code barre :
+						<img class="code-bar" src="{{asset(product[0].barcode)}}" alt="code barre"/>
+					</li>
+				</ul>
+
+
+				<div
+					class=" cleanup-border d-flex-j-sp-btw flex-dir margin-b-3">
+
+					{# <img class="code-bar" src="{{asset('build/images/code-barres.fd91f82a.jpg')}}" alt="code barre???"/> #}
+
+
+					{% if app.user %}
+						<div class="#">
+							<label for="price-client">Prix en HT :</label>
+							<span name="price-client" id="price-client" class="text-cleanup-primary">...</span>
+						</div>
+						<div>
+							<label for="quantityDesired">Quantité :</label>
+							<input type="number" name="quantityDesired" min="1" value = 1 id="">
+						</div>
+
+						{# <button type="submit" href={{path('item_detail',{id: product[0].id  })}} class="btn-primary btn-resizing "> #}
+						<button type="submit" class="btn-primary btn-resizing ">
+							<span class="material-symbols-outlined span">
+								shopping_cart
+							</span>
+
+						</button>
+
+					{% else %}
+						<span name="price-client" id="price-client" class="text-cleanup-cloudy"><a href="{{ path('app_contact') }}">Nous contacter</a> pour le prix ou créer un compte via ce formulaire<a href="{{ path('app_register') }}" >	<span class="material-symbols-outlined span">description</span></a> <u>si vous êtes un professionnel.</u></span>
+					{% endif %}
+
+
+				</div>
+			</div>
+
+		</form>
+	{% endblock %}

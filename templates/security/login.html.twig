@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter
+{% endblock %}
+
+{% block body %}
+	<div class="form-cleanup cleanup-border">
+		<div class="form-first-part">
+			<h2>Se connecter</h2>
+			<p class="text-cleanup-danger asterisk-bottom-position">  <small>champ obligatoire</small><sup>*</sup></p>
+		</div>
+
+		<div class="form-second-part">
+			<div class="form-div">
+				{% if error %}
+					<div class="cleanup-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
+				{{ form_start(loginForm) }}
+
+				{{ form_end(loginForm) }}
+<div>
+				<a class="underline-for-link" href="{{ path('app_forgot_password_request')}}">Mot de passe oublié?</a>
+				<a class="underline-for-link" href="{{ path('app_register')}}">S'enregister ?</a>
+
+			</div>
+			
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

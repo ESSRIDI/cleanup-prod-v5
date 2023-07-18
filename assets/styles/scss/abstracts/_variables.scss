@@ -1,0 +1,135 @@
+@use "sass:map";
+$cleanup-primary:#005495!default; // couleur ecrasable
+$cleanup-secondary:#cf0e2b!default;// couleur ecrasable
+$cleanup-success: #dedd00;
+$cleanup-valid: #4a9802;
+$cleanup-sky: #1b7886;
+$cleanup-danger:#960303;
+$cleanup-danger-light:#643636;
+$cleanup-warning:#f4bc23;
+$cleanup-warning-dark:#a77b02;
+$cleanup-cloudy:#6D6968;
+$cleanup-cloudy-dark:#2f2c2b;
+$cleanup-cloudy-light:#b1b0b0;
+$cleanup-light:#f6fbff;
+$cleanup-dark:#00182c;
+
+// ma pallette de couleurs
+$schema-colors: (
+    'cleanup-primary':$cleanup-primary,
+    'cleanup-secondary':$cleanup-secondary,
+    'cleanup-danger':$cleanup-danger,
+    'cleanup-light':$cleanup-light,
+    'cleanup-dark':$cleanup-dark,
+    'cleanup-sky':$cleanup-sky,
+    'cleanup-valid':$cleanup-valid,
+    'cleanup-success':$cleanup-success,
+    'cleanup-cloudy': $cleanup-cloudy,
+    'cleanup-cloudy-light':$cleanup-cloudy-light
+
+);
+
+
+$cleanup-font-path :"/./assets/fonts";
+
+// mes tailles de polices
+$cleanup-base-font-size: 1.25rem !default;
+$cleanup-font-size-small: $cleanup-base-font-size * 0.75 !default;
+$cleanup-font-size-large: $cleanup-base-font-size * 1.5 !default;
+$cleanup-font-size-xlarge: $cleanup-base-font-size * 2 !default;
+$cleanup-font-size-xxlarge: $cleanup-base-font-size * 3 !default;
+$cleanup-font-size-xxxlarge: $cleanup-base-font-size * 4 !default;
+
+// mes marges et padding par défaut
+$cleanup-base-padding: 0.75rem !default;
+$cleanup-base-margin: 0.75rem !default;
+
+// mes bordures
+$cleanup-base-border-thickness: 1px !default;
+$cleanup-base-border-radius: 10px !default;
+$cleanup-base-shadow: 3px 3px 10px 0px #222d51 !default;
+
+// mes largeurs max des containers
+$cleanup-small-container: 768px;
+$cleanup-base-container: 1100px;
+$cleanup-large-container: 1366px;
+
+
+// definir mes tailles d'écrans
+$breakpoints:(
+"xs": 0px,
+"sm": 480px,
+"md":720px,
+"lg":1100px,
+"xl":1400px,
+);
+
+
+
+
+// ma grid nombre de colonnes
+$grid-columns: 12;
+
+// mes espaces
+$grid-gaps: (
+  "0": 0,
+  "1": 0.5rem,
+  "2": 1rem,
+  "3": 1.5rem,
+  "4": 2rem,
+);
+
+// mes justifcations dans flex
+$layout-values: flex-start, flex-end, center, space-between, space-around,
+  space-evenly;
+// mes justifcations dans flex
+$text-align-values: start, end, center;
+
+// génerer une liste des couleurs pour mes Arrières plans et mes textes
+@each $key, $val in $schema-colors {
+    .text-#{$key} {
+      color: $val;
+    }
+    .text-hover-#{$key} {
+      &:hover {
+        color: $val;
+      }
+    }
+    .bg-#{$key} {
+      background-color: $val;
+    }
+
+    @if ($key != 'cleanup-light'){
+        // génerer des variantes plus ** claire ** de chaque couleur
+    @for $i from 1 through 9 {
+        .text-#{$key}-light-#{$i} {
+          color: mix(white, $val, $i * 10%);
+        }
+        .text-hover-#{$key}-light-#{$i} {
+          &:hover {
+            color: $val;
+          }
+        }
+        .bg-#{$key}-light-#{$i} {
+          background-color: mix(white, $val, $i * 10%);
+        }
+      }
+
+    }
+    @if ($key != 'cleanup-dark'){
+    // génerer des variantes  plus ** foncée ** de chaque couleur
+    @for $i from 1 through 9 {
+      .text-#{$key}-dark-#{$i} {
+        color: mix(black, $val, $i * 10%);
+      }
+      .text-hover-#{$key}-dark-#{$i} {
+        &:hover {
+          color: $val;
+        }
+      }
+      .bg-#{$key}-dark-#{$i} {
+        background-color: mix(black, $val, $i * 10%);
+      }
+    }
+}
+}

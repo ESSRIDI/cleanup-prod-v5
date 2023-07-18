@@ -1,0 +1,51 @@
+@use "sass:list";
+@use './variables';
+//creation des contenairs 
+@mixin container($max-wth){
+    width: 100%;  
+    margin: 0 auto;
+    padding : 0 1rem;
+    box-sizing: border-box;
+    max-width: $max-wth ;
+  }
+
+  // Enlever la toute les décoration d'une liste
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+  // @content; permet 'inclure le contenu qu'on veut
+@mixin xs {
+    @media only screen and (min-width: (map-get(variables.$breakpoints,"xs" ))) and (max-width: ((map-get(variables.$breakpoints,"sm" ))-1px)){
+       @content;
+    }
+  }
+  @mixin sm {
+    @media only screen and (min-width: (map-get(variables.$breakpoints,"sm" ))) and (max-width: ((map-get(variables.$breakpoints,"md" ))-1px)){
+      @content;
+    }
+  }
+  @mixin md {
+    @media only screen and (min-width: (map-get(variables.$breakpoints,"md" ))) and (max-width: ((map-get(variables.$breakpoints,"lg" ))-1px)) {
+      @content;
+    }
+  }
+  @mixin lg {
+    @media only screen and (min-width: (map-get(variables.$breakpoints,"lg" ))) and (max-width: ((map-get(variables.$breakpoints,"xl" ))-1px)){
+      @content;
+    }
+  }
+  @mixin xl {
+    @media (min-width: map-get(variables.$breakpoints,"xl" )) {
+      @content;
+    }
+  }
+  
+  // breakpoint defini par l'utilisateur
+@mixin breakpoint($new-breakpoint:0) {
+  @media (min-width:$new-breakpoint ){
+    @content;
+  }
+}

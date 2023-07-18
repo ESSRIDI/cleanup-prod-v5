@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits
+{% endblock %}
+
+{% block body %}
+
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<div class="d-flex-j-sp-btw">
+		<h1 class="cleanup-shadow-blue">Nos produits</h1>
+		{% if isAdmin %}
+			<a href="{{path('app_product_new')}}" class="btn-primary">
+				<span class="material-symbols-outlined span">
+					library_add
+				</span>
+			</a>
+		{% endif %}
+	</div>
+	{% if isAdmin %}
+		<div class="d-flex-j-sp-btw">
+			<h2 class="cleanup-shadow-red">Aller a la liste des catégories</h2>
+			<a href="{{path('app_category_list')}}" class="btn-secondary">
+				<span class="material-symbols-outlined span">
+					format_list_bulleted
+				</span>
+			</a>
+		</div>
+	{% endif %}
+	{% for category in categories %}
+		<div class="d-flex-j-sp-btw">
+			<h2 class="cleanup-shadow-red">
+				{{category.label}}
+			</h2>
+			{% if isAdmin %}
+				<a href="{{path('app_category_edit',{id: category.id})}}" class="btn-secondary">
+					<span class="material-symbols-outlined span">
+						edit
+					</span>
+				</a>
+			{% endif %}
+		</div>
+
+		<ul class="cleanup-row">
+			{% for product in products %}
+				{% if product.category == category.label %}
+
+					<li class="cleanup-card">
+						<div class="d-flex-j-sp-btw">
+							<h3 class="cleanup-text-align-center">{{product.name}}</h3>
+							{% if product.isAvailable %}
+								<span class="material-symbols-outlined valid span">
+									blur_on
+								</span>
+
+							{% else %}
+								<span class="material-symbols-outlined not-valid span">
+									blur_on
+								</span>
+
+							{% endif %}
+						</div>
+						<a href="{{path('app_product_show' ,{id: product.id})}}" >
+						<img src="{{ asset(product.image) }}" alt="image de produit"/>
+						<a>
+						<p class="body">
+							{{product.description[:50]}}...
+
+						</p>
+						<a href="{{path('app_product_show' ,{id: product.id})}}" class="savoir-plus">
+							...en savoir plus</a>
+
+
+						<div class="actions">
+							{% if isAdmin %}
+								<a href="{{path('app_product_edit' ,{id: product.id})}}" class="btn-edit">
+									<span class="material-symbols-outlined span">
+										edit
+									</span>
+								</a>
+								<form
+									action="{{ url('app_product_delete', { id: product.id }) }}" method="post">
+									{# csrf_token() pour générer un token #}
+									<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"/>
+
+									<button class="btn-delete" onclick="return confirm('Êtes-vous sûr de supprimer le produit {{product.name}} ?');" type="submit">
+										<span class="material-symbols-outlined span">
+											delete
+										</span>
+									</button>
+								</form>
+
+							{% endif %}
+
+						</div>
+
+					</li>
+
+				{% endif %}
+				
+			{% endfor %}
+		</ul>
+	{% endfor %}
+
+	<div class="info-for-users">
+		<p>
+			<span class="material-symbols-outlined not-valid span">
+				blur_on
+			</span>
+			<i class="text-cleanup-cloudy">Produit non disponible pour le moment</i>
+		</p>
+		<p>
+			<span class="material-symbols-outlined valid span">
+				blur_on
+			</span>
+			<i class="text-cleanup-cloudy">Produit disponible</i>
+		</p>
+	</div>
+
+{% endblock %}

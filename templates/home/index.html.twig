@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+
+{% endblock %}
+
+
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+	
+	{% include "_components/_caroussel.html.twig" %}
+	
+{% endblock %}
+{% block footer %}
+{% include "_components/_caroussel_pub.html.twig" %}{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+
+{% endblock %}

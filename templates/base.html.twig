@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block meta %}{% endblock %}
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="{{asset('build/images/favicon.ico')}}">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous" defer></script>
+
+ 
+
+	</head>
+
+	<body > 
+		<header>
+        {% include "_components/_navbar.html.twig" %}
+		
+		{% block header %}{% endblock %}
+        </header>
+		<main>
+
+			{% block body %}
+           
+            {% endblock %}
+		</main>
+		<footer>
+		{% block footer %}{% endblock %}
+        {% include "_components/_footer.html.twig" %}
+        </footer>
+
+		{% block javascripts %}
+{# //  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> #}
+			 <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le6EgUnAAAAAEDc61O3ceLBTjSEl2jS8T-SK40B"></script>
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+
+	</body>
+</html>

@@ -1,0 +1,126 @@
+@use "../abstracts/variables";
+.mySlides {display: none;
+transition: all 3s ease-in-out;
+z-index:5;
+}
+
+.img-carousel {
+    vertical-align: middle;
+    object-fit:contain;
+    max-height: 50vh;
+    border-radius:1rem;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  height: 50vh;
+  position: relative;
+  margin: auto;
+}
+
+
+
+
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+ 
+}
+
+@keyframes fade {
+  
+    from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+
+// Slides cleint logo
+
+// body {
+// 	align-items: center;
+// 	background: #E3E3E3;
+// 	display: flex;
+// 	height: 100vh;
+// 	justify-content: center;
+// }
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  rgb(194, 214, 232) 0%,rgba(155, 190, 220,0) 100%);
+}
+
+$animationSpeed: 30s;
+
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
+
+// Styling
+.slider {
+	background: #fff;
+	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+	height: 150px;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+  // bottom: -6rem;
+  // position:static;
+  // max-width: 50%;
+  z-index:-4;
+  bottom: 0rem;
+ 
+ 
+	max-width: 1400px;
+	
+	&::before,
+	&::after {
+		@include white-gradient;
+		content: "";
+		height: 150px;
+		position: absolute;
+		width: 150px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+	}
+	
+	.slide {
+		height: 150px;
+		width: 150px;
+	}
+}

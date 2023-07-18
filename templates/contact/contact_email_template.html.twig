@@ -1,0 +1,31 @@
+
+{% if isUrgent %}
+<h1 style="color:#b30000;text-align:center;">Sujet : {{ subject|upper}}</h1>
+{% else %}
+    
+<h1 style="color:#000099;text-align:center;">Sujet : {{ subject|upper}}</h1>
+{% endif %}
+<div style="border : 1px dashed #000099;" >
+<ul>
+<li><span>&#128467;&#65039;</span> Mail reçu le {{date|date("jS F Y \\à g:ia")}}</li>
+<li><span>&#128231;</span> de <strong> {{fName|title}} </strong> [<a href="mailto:{{ from }}">{{ from }}</a>]</li>
+<li><span>&#128241;</span>[<a href="tel:{{ phone }}">{{ phone }}</a>]</li>
+
+</ul>
+</div>
+<hr style="border : 1px dotted #000099;">
+<div>
+<p>
+<span>&#128221;</span>
+{{message}}
+</p>
+</div>
+<hr style="border : 1px dotted #000099;">
+
+{% if isUrgent %}
+<h2> <span>&#128197;</span> A traité ABSOLUMENT avant le <span style="color:#b30000; font-size: 2rem">{{expiration_date|date("jS F Y \\à g:ia")}}</span> </h2>
+
+{% else %}
+    
+<h2> <span>&#128197;</span> A traité avant le <span style="color:#a7b324; font-size: 1.5rem">{{expiration_date|date("jS F Y \\à g:ia")}}</span> </h2>
+{% endif %}

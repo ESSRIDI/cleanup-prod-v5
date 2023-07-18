@@ -1,0 +1,44 @@
+{# Vue a terminer  #}
+
+<div class ="d-flex-j-sp-btw">
+	<div>
+    <label for="user-select">
+		Selectionnez un utilisateur</label>
+	<select name="user-select"   id="">
+		{% for user in users %}
+			<option value={{user.id}}>{{user}}</option>
+		{% endfor %}
+	</select>
+        </div>
+        <a href="{{path('app_price_new')}}" class="btn-add">
+		<span class="material-symbols-outlined span ">
+			add
+		</span>
+	</a>
+    </div>
+
+	
+{% for product in products %}
+    
+
+
+        <div class="cleanup-border cleanup-pad-1 d-flex-j-sp-btw felx-wrapped">
+			<h4 class="text-cleanup-sky min-width-50">{{product.name}}</h4>
+            <select name="volume-select"> 
+            {% for volume in product.volumes %}
+                <option value={{ volume.volume }}>
+                {{ volume }} {{product.unity }}
+                </option>
+            {% endfor %}
+           </select>
+
+
+                <div class="text-cleanup-valid">prix</div>
+     
+             <div class="btn-edit span"><span class="material-symbols-outlined">
+border_color
+</span></div>
+		</div>
+{% endfor %}
+	
+

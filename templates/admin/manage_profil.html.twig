@@ -1,0 +1,31 @@
+
+{{ form_start(userForm) }}
+{{ form_row(userForm.firstName) }}
+{{ form_row(userForm.lastName) }}
+{{ form_row(userForm.email) }}
+{{ form_row(userForm.password) }}
+{{ form_row(userForm.phoneOne) }}
+{{ form_row(userForm.phoneTwo) }}
+<div class="cleanup-border margin-0 ">
+<h3>Mes adresses
+   <a href="{{path('app_address')}}" class="btn-add">
+		<span class="material-symbols-outlined span">
+			add
+		</span>
+	</a>
+	</h3>
+{% for address in userForm.addresses %}
+{{ form_row(address) }}
+
+	<a  href="{{path('app_address_delete',{id: address.vars.value.id})}}" class="btn-delete">
+
+						<span class="material-symbols-outlined span">
+							delete
+						</span>
+					</a>
+				
+<hr class="separate-line">
+{% endfor %}
+	
+
+{{ form_end(userForm) }}

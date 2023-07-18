@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace utilisateur
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	<h1 class="text-cleanup-valid">
+		<em class="text-cleanup-cloudy-light">Bonjour,</em>
+		{{ app.user.firstName|capitalize }}
+		{{ app.user.lastName|capitalize }}
+	</h1>
+<ul class="legend">
+<li><span>1</span> Cordonnées de l'utilisateur</li>
+<li><span>2</span> Suivi des commandes</li>
+</ul>
+	<div id="tabBox">
+		<div class="tabWrap">
+			<input id="tab-01" name="tab" type="radio" checked/>
+			<label class="tab label-01" for="tab-01">
+				<span>1</span>
+			</label>
+			<!-- tabContent 01 -->
+			<article class="tabContent">
+				<h2>Cordonnées de l'utilisateur</h2>
+
+				<div class="">
+					{{ form_start(userForm) }}
+					{{ form_row(userForm.firstName) }}
+					{{ form_row(userForm.lastName) }}
+					{{ form_row(userForm.email) }}
+					{{ form_row(userForm.password) }}
+					{{ form_row(userForm.phoneOne) }}
+					{{ form_row(userForm.phoneTwo) }}
+					<div class="cleanup-border margin-0">
+						<h3>Mes adresses
+							<a href="{{path('app_address')}}" class="btn-add">
+								<span class="material-symbols-outlined span">
+									add
+								</span>
+							</a>
+						</h3>
+						{% for address in userForm.addresses %}
+							{{ form_row(address) }}
+
+							<a href="{{path('app_address_delete',{id: address.vars.value.id})}}" class="btn-delete">
+
+								<span class="material-symbols-outlined span">
+									delete
+								</span>
+							</a>
+
+							<hr class="separate-line">
+						{% endfor %}
+					</div>
+
+					{{ form_end(userForm) }}
+				</div>
+			</article>
+		</div>
+		<div class="tabWrap">
+			<input id="tab-02" name="tab" type="radio"/>
+			<label class="tab label-02" for="tab-02">
+				<span>2</span>
+			</label>
+			<!-- tabContent 02 -->
+			<article class="tabContent">
+				<h2>Suivi des commandes</h2>
+				<div>
+				{% include "/user/orders.html.twig" %}
+				
+				</div>
+			</article>
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

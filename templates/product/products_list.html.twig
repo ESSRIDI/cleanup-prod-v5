@@ -1,0 +1,58 @@
+
+	
+	<h1 class="d-flex-j-sp-btw text-cleanup-sky">Mes produits
+		{% if isAdmin %}
+			<a href="{{path('app_product_new')}}" class="btn-add">
+				<span class="material-symbols-outlined span">
+					add
+				</span>
+			</a>
+		{% endif %}
+	</h1>
+	<ul>
+
+		{% if products is empty %}
+			<p>
+				Vous n'avez pas encore de produit...</p>
+
+		{% else %}
+
+			{% for product in products %}
+				<li class="cleanup-list">
+					<h3>{{product.name}}</h3>
+					<p> <span class="text-cleanup-danger" >{{'/cat. ' ~ product.category}}</span>
+					<span class="text-cleanup-valid">
+					{% for volume in product.volumes %}
+						{{'|' ~ volume ~ product.unity ~'|'}}
+					{% endfor %}
+					</span>
+					<span class="text-cleanup-cloudy">{{' - ' ~ product.quality ~' - ' ~ 'parfum : ' ~ product.scent}}</span>
+					
+					</p>
+					<div
+						class="div">
+						{# {% if isAdmin %} #}
+						<a href="{{path('app_product_edit',{id: product.id})}}" class="btn-edit">
+							<span class="material-symbols-outline span">
+								edit
+							</span>
+						</a>
+				
+						<form
+							action="{{ url('app_product_delete', { id: product.id }) }}" method="post">
+							<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"/>
+							<button onclick="return confirm('Êtes-vous sûr supprimer le produit ?');" class="btn-delete" type="submit">
+								<span class="material-symbols-outlined span">
+									delete
+								</span>
+							</button>
+						</form>
+
+					</div>
+
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+	
+

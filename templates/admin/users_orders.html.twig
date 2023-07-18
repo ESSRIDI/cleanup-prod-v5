@@ -1,0 +1,42 @@
+<ul class="margin-b-3">
+
+	{% if users is empty %}
+		<p>
+			Vous n'avez pas encore des commandes à traiter...</p>
+
+	{% else %}
+
+		{% for order in usersOrders %}
+			<li class="cleanup-list">
+				<h3>{{order.reference}}</h3>
+				<p>| <strong>{{order.user.firstName}} {{order.user.lastName}}</strong> |</p>
+				{# <a href="{{ path('{{user.siretProof}}') }}">preuve</a> #}
+		
+	{{order.isPaid ? 
+					'<button class="badge paid" disabled> payé </button>'
+		:'<button class="badge unpaid" disabled> non payé </button>'
+
+		}}	
+        
+<time datetime={{order.createdAt|date("d/m/Y", "Europe/Paris") }}>{{order.createdAt|date("d/m/Y H:i", "Europe/Paris") }}</time>
+
+			
+                <select name="order-status-select" id="order-status-select" data-order-id={{order.id}}>
+                {% for constant in constants %}
+                {% if constant == order.status %}
+                
+                    <option value={{constant}} selected="selected" onclick="return confirm('Êtes-vous sûr de changer l état de la commande ?');">{{constant}}</option>
+               {% else %}
+                 <option value={{constant}}  onclick="return confirm('Êtes-vous sûr de changer l état de la commande ?');">{{constant}}</option>
+                    
+                {% endif %}
+                {% endfor %}
+                </select>
+
+
+						
+
+			</li>
+		{% endfor %}
+	{% endif %}
+</ul>

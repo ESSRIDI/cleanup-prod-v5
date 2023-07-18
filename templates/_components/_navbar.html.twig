@@ -1,0 +1,95 @@
+<nav class="top-nav">
+	<div id="wrap-row">
+	<img class="cleanup-logo" src="{{asset('build/images/logo-cleanaup.png')}}" alt="logo cleanup">
+		<sup>®</sup>
+	</div>
+
+	<ul>
+
+		<li>
+			<a class="menu-buttons" href={{path('app_home')}}>Accueil</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_about_us')}}>A propos</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_product_list')}}>Nos produits</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_contact')}}>Contact</a>
+		</li>
+
+	</ul>
+	
+<div class="wrap-row">
+		{% if is_granted('ROLE_SUPER_ADMIN') %}
+			<a class="profil-btn" href={{path('app_super_admin')}}>
+				<span id="btn-basket" class="material-symbols-outlined text-cleanup-danger span">
+					manage_accounts
+				</span>
+			</a>
+		{% else %}
+		{%  if is_granted('ROLE_ADMIN')%}
+			<a class="profil-btn" href={{path('app_admin')}}>
+				<span id="btn-basket" class="material-symbols-outlined text-cleanup-primary span">
+					manage_accounts
+				</span>
+			</a>
+		{% else %}
+		{% if is_granted('ROLE_USER') %}
+			<a class="profil-btn" href={{path('app_user')}}>
+				<span id="btn-basket" class="material-symbols-outlined text-cleanup-valid span">
+					person
+				</span>
+			</a>
+
+
+		{% endif %}
+	{% endif %}
+
+
+{% endif %}
+
+{% if app.user %}
+<a class="cleanup-btn-navbar btn-action-basket list" href={{path('app_shopping_cart')}} >
+	<span id="btn-basket" class="material-symbols-outlined span">
+		shopping_bag
+	</span>
+</a>
+{% endif %}
+		<button  id="menu-burger" class="cleanup-btn-navbar"  >
+			<span class="material-symbols-outlined span">
+				menu_open
+			</span>
+		</button>
+
+
+{% if app.user %}
+	<a class="login-btn" href={{path('app_logout')}}>Me déconnecter</a>
+{% else %}
+	<a class="login-btn" href={{path('app_login')}}>Se connecter</a>
+{% endif %}</div></nav>
+<div id="nav-for-mobile">
+<ul >
+
+		<li>
+			<a class="menu-buttons" href={{path('app_home')}}>Accueil</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_about_us')}}>A propos</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_product_list')}}>Nos produits</a>
+		</li>
+		<li>
+			<a class="menu-buttons" href={{path('app_contact')}}>Contact</a>
+		</li>
+
+	</ul>
+{% if app.user %}
+	<a class="login-btn" href={{path('app_logout')}}>Me déconnecter</a>
+{% else %}
+	<a class="login-btn" href={{path('app_login')}}>Se connecter</a>
+{% endif %}
+
+</div>

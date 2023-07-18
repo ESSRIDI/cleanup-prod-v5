@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Address{% endblock %}
+
+	
+
+{% block body %}
+{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+  <h1>Ajouter une adresse</h1>
+<div class="cleanup-border cleanup-pad-1">
+{{ form_start(addressForm) }}
+{{ form_row(addressForm.type) }}
+<div class="#">
+{{ form_row(addressForm.lineOne) }}
+{{ form_row(addressForm.lineTwo) }}
+</div>
+<div class="#">
+{{ form_row(addressForm.PostalCode) }}
+{{ form_row(addressForm.city) }}
+{{ form_row(addressForm.country) }}
+</div>
+
+<button type="submit">Enregistrer</button>
+{{ form_end(addressForm) }}
+
+</div>
+{% endblock %}

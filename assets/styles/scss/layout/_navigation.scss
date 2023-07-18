@@ -1,0 +1,168 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+nav {
+  margin: 0 auto;
+
+  max-width: 1400px;
+  display: flex;
+  font-weight: 700;
+  box-shadow: rgba(1, 95, 162, 0.45) 0px 25px 20px -20px;
+  color: #004e9b;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px #004e9b69 dotted;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  li {
+    font-size: variables.$cleanup-base-font-size;
+    padding: variables.$cleanup-base-padding;
+    &:hover {
+      background: radial-gradient(
+        circle,
+        rgba(157, 232, 255, 0.6012780112044818) 0%,
+        rgba(245, 253, 255, 0.55) 36%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+  }
+
+  a {
+    text-decoration: none;
+    &:visited {
+      color: #004e9b;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: #8cafd2;
+    }
+    // &:focus {
+    //   color: #c11523;
+    // }
+    &:active {
+      color: #c11523;
+    }
+  }
+
+  #menu-burger {
+    display: none;
+  }
+  .wrap-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+
+
+#nav-for-mobile {
+  display: none;
+  padding:1rem;
+  
+}
+.show-menu { display:block; }
+@include mixins.xs {
+
+  #nav-for-mobile {
+    display:none;
+    height: 60vh;
+    background-color: #ffffff71;
+ 
+    text-align:center;
+    li{
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      list-style: none;
+    }
+
+  }
+
+  nav {
+    .cleanup-logo{
+      width:130px;
+    }
+    ul {
+      display: none;
+      
+      
+    }
+    .login-btn {
+      display: none;
+    }
+    #menu-burger {
+      display: block;
+    }
+    .list {
+      display: block;
+    }
+  }
+}
+
+@include mixins.sm {
+  #nav-for-mobile {
+    display:none;
+    height: 60vh;
+    background-color: #ffffff71;
+    
+  
+    text-align:center;
+    li{
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      list-style: none;
+    }
+
+  }
+  
+  nav {
+    .cleanup-logo{
+      width:130px;
+     
+    }
+    ul {
+      display: none;
+ 
+    }
+    .login-btn {
+      display: none;
+    }
+    #menu-burger {
+      display: block;
+    }
+    .list {
+      display: block;
+    }
+  }
+}
+@include mixins.md {
+  nav {
+    .cleanup-logo{
+      width:100px;
+
+    }
+    li{
+      font-size: 1rem;
+      padding:0.5rem;
+           }
+    }
+
+}
+// @include mixins.lg {
+//     .cleanup-card {
+//         justify-content: space-around;
+//         width: math.div(90%, 4)
+//     }
+
+// }
+// @include mixins.xl {
+//     .cleanup-card {
+//         justify-content: space-around;
+//         width: math.div(90%, 4)
+//     }
+
+// }

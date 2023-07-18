@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-notice">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<h1 class="d-flex-j-sp-btw">Mes catégories
+		{% if isAdmin %}
+			<a href="{{path('app_category_new')}}" class="btn-add">
+				<span class="material-symbols-outlined span">
+					add
+				</span>
+			</a>
+		{% endif %}
+	</h1>
+	<ul>
+
+		{% if categories is empty %}
+			<p>
+				Vous n'avez pas encore de catégorie...</p>
+
+		{% else %}
+
+			{% for category in categories %}
+				<li class="cleanup-list">
+					<h3>{{category.label}}</h3>
+					<div
+						class="div">
+						{# {% if isAdmin %} #}
+						<a href="{{path('app_category_edit',{id: category.id})}}" class="btn-edit">
+							<span class="material-symbols-outline span">
+								edit
+							</span>
+						</a>
+				
+						<form
+							action="{{ url('app_category_delete', { id: category.id }) }}" method="post">
+							<input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"/>
+							<button onclick="return confirm('Êtes-vous sûr supprimer la catégorie ?');" class="btn-delete" type="submit">
+								<span class="material-symbols-outlined span">
+									delete
+								</span>
+							</button>
+						</form>
+
+					</div>
+
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+	<a class="underline-for-link" href="{{path('app_product_list')}}" >Aller aux produits</a>
+{% endblock %}

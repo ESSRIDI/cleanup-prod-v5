@@ -1,0 +1,25 @@
+@use '../abstracts/variables';
+@use "../abstracts/mixins";
+
+footer {
+  font-size: variables.$cleanup-font-size-small;
+    width: 100%;
+    white-space: nowrap;
+    position:fixed;
+    bottom: 0;
+    left:0;
+    padding: variables.$cleanup-base-padding;
+    text-align: left;
+    color: variables.$cleanup-primary;
+    z-index: -10;
+    // margin-top: 7rem;
+  }
+  @include mixins.xs {
+    footer {
+      position:relative;
+      bottom: 0;
+      left:0;
+    }
+  }
+
+ 

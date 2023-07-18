@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{title}}
+{% endblock %}
+{% block body %}
+		{% block head_title %}
+			<h1>{{title}}</h1>
+		{% endblock %}
+	<div class="cleanup-border">
+	<p class="text-cleanup-danger asterisk-bottom-position-relative">  <small>champ obligatoire</small><sup>*</sup></p>
+		{{ form_start(priceForm) }}
+		{{ form_row(priceForm.price) }}
+		{{ form_row(priceForm.user) }}
+		{{ form_row(priceForm.product) }}
+		{% if priceForm.volume is defined %}
+			{{ form_row(priceForm.volume) }}
+
+		{% endif %}
+
+		<button type="submit">Enregistrer</button>
+		{{ form_end(priceForm) }}
+	</div>
+{% endblock %}

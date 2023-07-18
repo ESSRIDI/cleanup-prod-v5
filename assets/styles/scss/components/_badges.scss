@@ -1,0 +1,20 @@
+@use '../abstracts/variables';
+.badge{
+  background-color: variables.$cleanup-valid;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border:none;
+  border-radius: 5px;
+
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.paid {
+  background-color: variables.$cleanup-success;
+  color: variables.$cleanup-valid;
+}
+.unpaid {
+    background-color: variables.$cleanup-danger;
+    color: variables.$cleanup-light;
+}

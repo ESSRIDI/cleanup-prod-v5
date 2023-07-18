@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<div class="form-cleanup cleanup-border">
+		<div class="form-first-part">
+			<h2>Nous contacter</h2>
+			<p class="text-cleanup-danger asterisk-bottom-position">
+				<small>champ obligatoire</small>
+				<sup>*</sup>
+			</p>
+		</div>
+		<div class="form-second-part">
+
+			<div class="form-div">
+				{{ form_start(contactForm) }}
+				{{ form_row(contactForm.fullName) }}
+				{{ form_row(contactForm.email) }}
+				{{ form_row(contactForm.phone) }}
+				{{ form_row(contactForm.subject) }}
+				{{ form_row(contactForm.message) }}
+				{{ form_end(contactForm) }}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,260 @@
+@use '../abstracts/variables';
+
+button{
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-primary;
+  background: transparent;
+  border: 2px solid variables.$cleanup-primary;
+  transition: all 1s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-primary;
+  }
+}
+
+// <span class="material-symbols-outlined">
+// add_circle
+// </span>
+// <style>
+// .material-symbols-outlined {
+//   font-variation-settings:
+//   'FILL' 1,
+//   'wght' 400,
+//   'GRAD' 0,
+//   'opsz' 48
+// }
+// </style>
+.btn-action {
+  // padding: variables.$cleanup-base-padding;
+  margin:0;
+  border: none;
+  font-family: 'Material Icons Outlined';
+  font-size: variables.$cleanup-font-size-large;
+    font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 48 ;
+  &:hover {
+    scale: 1.05;
+    color: variables.$cleanup-sky;
+  background-color:transparent;
+  }
+
+ 
+}
+.btn-danger {
+  color: variables.$cleanup-danger;
+  &:hover {
+    color: variables.$cleanup-secondary;
+   
+  }
+}
+
+  .btn-action-card{
+    font-family: "Material Icons Outlined";
+    
+    color: variables.$cleanup-primary;
+
+    
+ 
+  }
+  .btn-action-more-info{
+    font-family: "Material Icons Outlined";
+    color: variables.$cleanup-success;
+   
+ 
+  }
+  .cleanup-btn-navbar {
+    padding: variables.$cleanup-base-padding;
+    margin: variables.$cleanup-base-margin;
+    font-size: variables.$cleanup-base-font-size;
+    border-radius: variables.$cleanup-base-border-radius;
+    color: variables.$cleanup-primary;
+    background: transparent;
+    border: 2px solid variables.$cleanup-primary;
+    transition: all 1s ease-in-out;
+    // text-shadow: 0 3px 5px rgba(#5d6a90, 0.25);
+
+    white-space: nowrap;
+    background-image: url(/assets/images/nav-bg-fill-blue.png);
+    background-repeat: repeat-x;
+    background-position: 0 -100%;
+    
+   
+    &:hover {
+      background-position: 600% 100%;
+      color: white;
+      box-shadow: 13px 13px 15px rgba(#222d51, 0.25);
+     cursor:pointer;
+    }
+    
+ 
+  }
+  .btn-valid{
+   
+
+    color: variables.$cleanup-valid;
+    border: 2px solid variables.$cleanup-valid;
+&:hover{
+  color: variables.$cleanup-light;
+  background-color:variables.$cleanup-valid;
+}
+  }
+
+  .login-btn{
+    padding: variables.$cleanup-base-padding;
+    margin: variables.$cleanup-base-margin;
+    font-size: variables.$cleanup-base-font-size;
+    border-radius: variables.$cleanup-base-border-radius;
+    color: variables.$cleanup-primary;
+    background: transparent;
+    border: 2px solid variables.$cleanup-primary;
+    transition: all 1s ease-in-out;
+    white-space: nowrap;
+    background-image: url(/assets/images/nav-bg-fill-blue.png);
+    background-repeat: repeat-x;
+    background-position: 0 -100%;
+    
+    transition: all 1s ease-out;
+    &:hover {
+      color: variables.$cleanup-light;
+      background-color:variables.$cleanup-primary;
+      background-position: 600% 100%;
+      color: white;
+      box-shadow: 13px 13px 15px rgba(#222d51, 0.25);
+     cursor:pointer;
+
+  }
+}
+.btn-edit{
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-cloudy;
+  background: transparent;
+  border: 2px solid variables.$cleanup-cloudy;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-cloudy;
+  }
+}
+
+.btn-delete{
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-danger;
+  background: transparent;
+  border: 2px solid variables.$cleanup-danger;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-danger;
+  }
+}
+.btn-add{
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-valid;
+  background: transparent;
+  border: 2px solid variables.$cleanup-valid;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-valid;
+  }
+}
+.btn-primary{
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-primary;
+  background: transparent;
+  border: 2px solid variables.$cleanup-primary;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-primary;
+  }
+}
+.btn-secondary{
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-secondary;
+  background: transparent;
+  border: 2px solid variables.$cleanup-secondary;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-secondary;
+  }
+
+}
+.add_item_link {
+  text-decoration:none;
+padding: variables.$cleanup-base-padding;
+margin: variables.$cleanup-base-margin;
+font-size: variables.$cleanup-base-font-size;
+border-radius: variables.$cleanup-base-border-radius;
+color: variables.$cleanup-valid;
+background: transparent;
+border: 2px solid variables.$cleanup-valid;
+transition: all 0.5s ease-in-out;
+&:hover {
+  color: variables.$cleanup-light;
+background-color:variables.$cleanup-valid;
+}
+
+}
+
+.delete_item_link {
+  text-decoration:none;
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  border-radius: variables.$cleanup-base-border-radius;
+  color: variables.$cleanup-danger;
+  background: transparent;
+  border: 2px solid variables.$cleanup-danger;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    color: variables.$cleanup-light;
+  background-color:variables.$cleanup-danger;
+  }
+
+}
+
+.profil-btn {
+ 
+  padding: variables.$cleanup-base-padding;
+  margin: variables.$cleanup-base-margin;
+  font-size: variables.$cleanup-base-font-size;
+  margin-top:auto;
+scale: 1.7;
+  border-radius: 50%;
+  color: variables.$cleanup-primary;
+  background: transparent;
+  border: none;
+  transition: color 1s;
+  &:hover {
+ 
+    color:variables.$cleanup-secondary;
+  }
+}

@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% block greeting %}
+		<h1>
+			<em class="text-cleanup-cloudy-light">Bonjour,</em>
+
+			{{ app.user.firstName|capitalize }}
+			{{ app.user.lastName|capitalize }}
+		</h1>
+
+	{% endblock %}
+	{% block legend %}
+			<ul class="legend">
+<li><span>1</span> Gestion des produits</li>
+<li><span>2</span> Cordonnées de l'utilisateur</li>
+<li><span>3</span> Suivi de mes commandes</li>
+<li><span>4</span> Etats des commandes des clients</li>
+</ul>
+{% endblock %}
+	<div id="tabBox">
+		<div class="tabWrap">
+			<input id="tab-01" name="tab" type="radio" checked/>
+			<label class="tab label-01" for="tab-01">
+				<span>1</span>
+			</label>
+			<!-- tabContent 01 -->
+			<article class="tabContent">
+				<h2>Gestion des produits</h2>
+
+				<div>
+					{# <label for="customer">choisir un client</label>
+										<select name="customer" id="customer">
+										{% for  customer in  customers %}
+											<option value={{customer.id}}>{{customer.firstName}} {{customer.lastName}}</option>
+											
+										{% endfor %}
+										
+										</select> #}
+					{% include "product/products_list.html.twig" %}
+
+
+				</div>
+			</article>
+		</div>
+		<div class="tabWrap">
+			<input id="tab-02" name="tab" type="radio"/>
+			<label class="tab label-02" for="tab-02">
+				<span>2</span>
+			</label>
+			<!-- tabContent 02 -->
+			<article class="tabContent">
+				<h2>Cordonnées utilisateur</h2>
+				<div>
+					{% include "admin/manage_profil.html.twig" %}
+					{# {% include "product/products_list.html.twig" %} #}
+				</div>
+			</article>
+		</div>
+		<div class="tabWrap">
+			<input id="tab-03" name="tab" type="radio"/>
+			<label class="tab label-03" for="tab-03">
+				<span>3</span>
+			</label>
+			<!-- tabContent 03 -->
+			<article class="tabContent">
+				<h2>Suivi de mes commandes</h2>
+				<div>
+					{% include "/user/orders.html.twig" %}
+
+				</div>
+			</article>
+		</div>
+
+
+		{% block tab %}
+			<div class="tabWrap">
+				<input id="tab-04" name="tab" type="radio"/>
+				<label class="tab label-04" for="tab-04">
+					<span>4</span>
+				</label>
+				<!-- tabContent 04 -->
+
+				<article class="tabContent">
+					<h2>Etats des commandes</h2>
+					<div>
+
+						{% include "admin/users_orders.html.twig" %}
+
+					</div>
+				</article>
+			</div>
+		{% endblock %}
+
+
+	</div>
+{% endblock %}

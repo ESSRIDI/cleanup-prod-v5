@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'enregister{% endblock %}
+
+{% block body %}
+<div class="form-cleanup cleanup-border">
+   
+<div class="form-first-part">
+
+    <h2>Créer votre compte</h2>
+    <p class="text-cleanup-danger asterisk-bottom-position">  <small>champ obligatoire</small><sup>*</sup></p>
+</div>
+
+  	<div class="form-second-part">
+     {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <div class="form-div">
+    {{ form_start(registrationForm) }}
+     {{ form_row(registrationForm.firstName) }}
+    {{ form_row(registrationForm.lastName) }}
+        {{ form_row(registrationForm.email) }}
+       
+        {{ form_row(registrationForm.plainPassword, {
+            
+        }) }}
+          {{ form_row(registrationForm.siretNumber) }}
+        {{ form_row(registrationForm.siretProof) }}
+     {{ form_row(registrationForm.agreeTerms) }}
+   <a class="underline-for-link" href="{{path('app_signup_conditions')}}">CGU</a>
+      
+    {{ form_end(registrationForm) }}
+    <p><span class="text-cleanup-danger">&#9888;</span> <small class="text-cleanup-primary d-flex-j-center">La création d'un compte est uniquement réservée aux professionnels</small></p>
+    </div>
+    
+     </div>
+   </div>
+{% endblock %}
+

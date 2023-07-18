@@ -1,0 +1,17 @@
+	{% extends 'base.html.twig' %}
+     {% block title %}
+	Ajouter une catégorie
+{% endblock %}
+    {% block body %}
+   
+   {% block head_title %}
+   <h1>Ajouter une nouvelle catégorie</h1>
+   {% endblock %}
+    <div>
+    {{ form_start(categoryForm) }}
+    {# {{ form.row(categoryForm.submit)}} #}
+ {{ form_end(categoryForm) }}
+<a class="underline-for-link" href="{{path('app_category_list')}}">Annuler</a>
+    </div>
+   
+    {% endblock %}
