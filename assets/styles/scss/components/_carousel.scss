@@ -67,11 +67,11 @@ z-index:5;
 }
 
 $animationSpeed: 30s;
-
+$animationSpeed2: 40s;
 // Animation
 @keyframes scroll {
 	0% { transform: translateX(0); }
-	100% { transform: translateX(calc(-250px * 7))}
+	100% { transform: translateX(calc(-450px * 5))}
 }
 
 
@@ -122,5 +122,54 @@ $animationSpeed: 30s;
 	.slide {
 		height: 150px;
 		width: 150px;
+	}
+}
+
+.slider-text {
+	background: none;
+	
+	height: 150px;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+  // bottom: -6rem;
+  // position:static;
+  // max-width: 50%;
+  z-index:-4;
+  bottom: 0rem;
+ 
+ 
+	max-width: 1400px;
+	
+	&::before,
+	&::after {
+		
+		content: "";
+		height: 100px;
+		position: absolute;
+		width: 650px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track {
+		animation: scroll $animationSpeed2 linear infinite;
+		display: flex;
+		width: calc(650px * 5);
+	}
+	
+	.slide {
+		height: 100px;
+		width: 650px;
 	}
 }

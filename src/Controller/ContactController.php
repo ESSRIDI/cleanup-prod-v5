@@ -35,7 +35,18 @@ class ContactController extends AbstractController
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
 
             $contactFormData = $contactForm->getData();
-            $subject = $contactFormData['subject'];
+            switch ($contactFormData['subject']) {
+                case 'claim':
+                    $subject= 'Réclamation';
+                    break;
+                    case 'others':
+                        $subject= 'Autres';
+                        break;
+                default:
+                $subject= 'Demande d\'information';
+            break;
+            }
+            // $subject = $contactFormData['subject'];
             $from = $contactFormData['email'];
             $fName = $contactFormData['fullName'];
             $phone=  $contactFormData['phone'];

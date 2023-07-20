@@ -1,4 +1,5 @@
 @use "../abstracts/variables";
+@use "../abstracts/mixins";
 
 input, select {
   // width:8rem;
@@ -45,3 +46,12 @@ textarea{
 
 }
 
+.wide-input {
+width:25rem;
+}
+@include mixins.xs {
+
+  .wide-input {
+    width:15rem;
+    }
+}

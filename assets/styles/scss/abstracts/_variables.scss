@@ -1,9 +1,11 @@
 @use "sass:map";
 $cleanup-primary:#005495!default; // couleur ecrasable
 $cleanup-secondary:#cf0e2b!default;// couleur ecrasable
+$cleanup-secondary-light:#cf0e2b6c;
 $cleanup-success: #dedd00;
 $cleanup-valid: #4a9802;
 $cleanup-sky: #1b7886;
+$cleanup-sky-light: #1b788679;
 $cleanup-danger:#960303;
 $cleanup-danger-light:#643636;
 $cleanup-warning:#f4bc23;
@@ -18,10 +20,12 @@ $cleanup-dark:#00182c;
 $schema-colors: (
     'cleanup-primary':$cleanup-primary,
     'cleanup-secondary':$cleanup-secondary,
+    'cleanup-secondary-light':$cleanup-secondary-light,
     'cleanup-danger':$cleanup-danger,
     'cleanup-light':$cleanup-light,
     'cleanup-dark':$cleanup-dark,
     'cleanup-sky':$cleanup-sky,
+    'cleanup-sky-light':$cleanup-sky-light,
     'cleanup-valid':$cleanup-valid,
     'cleanup-success':$cleanup-success,
     'cleanup-cloudy': $cleanup-cloudy,
