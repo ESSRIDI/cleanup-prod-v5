@@ -181,9 +181,13 @@ background-color: #222d5131;
       padding: 2em;
       pointer-events: all;
       overflow: auto;
+      margin: 0;
+      min-height: 500px;
+      width:100%;
+      
     }
   }
-  
+ 
   // -------------- OVERLAY
   
   .details-modal-overlay {
@@ -246,3 +250,9 @@ background-color: #222d5131;
   
   }
   
+  .download {
+    margin-left: auto;
+    padding:1rem;
+    font-size: 2rem;
+   
+  }
